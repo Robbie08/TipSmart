@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">TipSmart</string>
+    <string name="numPeople">Enter the Total Amount Of People Splitting</string>
+    <string name="tipAmt">Please Enter The Desired Tip Amount</string>
+    <string name="totalBill">Please Input The Total Bill</string>
+    <string name="billExampe">00.00</string>
+    <string name="buttonCalc">Calculate</string>
+    <string name="counterPeople">1 People</string>
+    <string name="counterTip">0%</string>
+    <string name="dialog_text">Please Enter The Desired Tip</string>
+    <string name="hint">25</string>
+</resources>
