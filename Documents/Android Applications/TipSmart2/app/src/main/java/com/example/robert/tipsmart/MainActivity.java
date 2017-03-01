@@ -18,6 +18,8 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     public TextView numPeople;
     public CheckBox cb15Percent, cb18Percent, cb20Percent, cbCustomTip;
     public String messageNumbPeople, messageTotalTip, messageTotalBill, smsTotalTip;
-    public String test;
+    public String test = "0.00";
     public static Double doubleCustomTip;
 
 
@@ -211,38 +213,54 @@ public class MainActivity extends AppCompatActivity {
     public void sendMessage(View view) {
 
 
+        Intent in = new Intent(this, ActivityDisplayTotal.class);
+
         //Parse variables to String
         messageTotalBill = totalBill.getText().toString();
         messageNumbPeople = numPeople.getText().toString();
         messageNumbPeople = messageNumbPeople.replace(" People","");
 
-        if(doubleCustomTip == null){
-            doubleCustomTip =0.00;
+
+        if ((messageTotalTip == "")) {
+            try{
+            test = Double.toString(doubleCustomTip);
+            }catch (NullPointerException ex){
+            Toast.makeText(MainActivity.this,"Please make sure to fill out everything",Toast.LENGTH_LONG).show();
+            }
+            messageTotalTip = test;
+
+            //TEST THAT OUR VALUE IS NOT NULL
+            Log.d("SWEET", "OUR VALUE IS: " + messageTotalTip);
+        } else if ((messageTotalTip == null)) {
+            try{
+                test = Double.toString(doubleCustomTip);
+            }catch (NullPointerException ex){
+                Toast.makeText(MainActivity.this,"Please make sure to fill out everything",Toast.LENGTH_LONG).show();
+            }
+            messageTotalTip = test;
+
+            //TEST THAT OUR VALUE IS NOT NULL
+            Log.d("SWEET", "OUR VALUE IS: " + messageTotalTip);
         }
-//        if(!Objects.equals(messageTotalTip, "")) {
-//            doubleCustomTip = 0.00;
-//        }
-        test = Double.toString(doubleCustomTip);
-        messageTotalTip = test;
-
-        //TEST THAT OUR VALUE IS NOT NULL
-        Log.d("SWEET", "OUR VALUE IS: " + messageTotalTip);
 
 
 
-        Intent in = new Intent(this, ActivityDisplayTotal.class);
 
-        //Destroys the activity once intent has been executed
-        in.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
-        // attach the variable into the intent
-        in.putExtra(MESSAGE_KEY_NUM_PEOPLE, messageNumbPeople);
-        in.putExtra(MESSAGE_KEY_NUM_TIP, messageTotalTip);
-        in.putExtra(MESSAGE_KEY_TOTAL, messageTotalBill);
 
-        // Will start the next activity and send the data
-        startActivity(in);
-        finish();
+
+            //Destroys the activity once intent has been executed
+            in.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+            // attach the variable into the intent
+            in.putExtra(MESSAGE_KEY_NUM_PEOPLE, messageNumbPeople);
+            in.putExtra(MESSAGE_KEY_NUM_TIP, messageTotalTip);
+            in.putExtra(MESSAGE_KEY_TOTAL, messageTotalBill);
+
+            // Will start the next activity and send the data
+            startActivity(in);
+            finish();
+
 
     }
 
