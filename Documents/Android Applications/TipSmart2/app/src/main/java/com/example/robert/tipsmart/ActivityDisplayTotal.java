@@ -15,7 +15,7 @@ import android.widget.TextView;
  * Created by Roberto on 2/28/2017.
  */
 
-public class DisplayTotalActivity extends AppCompatActivity {
+public class ActivityDisplayTotal extends AppCompatActivity {
     /* Declare Variables */
     Button reset;
     TextView tvPerPerson, tvGrandTotal, tvTip, tvTipPercent, tvPeopleAMT;
