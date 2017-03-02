@@ -16,15 +16,14 @@ import android.widget.TextView;
  */
 
 public class ActivityDisplayTotal extends AppCompatActivity {
+    public final static String MESSAGE_KEY_TOTAL = "com.example.robert.tipprototypeio";
+    public final static String MESSAGE_KEY_NUM_PEOPLE = "112233";
+    public final static String MESSAGE_KEY_NUM_TIP = "boba6969";
     /* Declare Variables */
     Button reset;
     TextView tvPerPerson, tvGrandTotal, tvTip, tvTipPercent, tvPeopleAMT;
     Double valueNumPeople, valueNumTip, valueGrandTotal;
     Double totalTip, totalPerPerson, grandTotal;
-    public final static String MESSAGE_KEY_TOTAL = "com.example.robert.tipprototypeio";
-    public final static String MESSAGE_KEY_NUM_PEOPLE = "112233";
-    public final static String MESSAGE_KEY_NUM_TIP = "boba6969";
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -125,8 +124,12 @@ public class ActivityDisplayTotal extends AppCompatActivity {
 
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-            exitByBackKey();
+            //exitByBackKey();
 
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            finish();
             return true;
         }
         return super.onKeyDown(keyCode, event);

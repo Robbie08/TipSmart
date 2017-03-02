@@ -23,23 +23,39 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    /* Declare Local Variables */
-    public Button calculate;
-    public EditText totalBill, etCustomTip;
     public final static String MESSAGE_KEY_TOTAL = "com.example.robert.tipprototypeio";
     public final static String MESSAGE_KEY_NUM_PEOPLE = "112233";
     public final static String MESSAGE_KEY_NUM_TIP = "boba6969";
     public final static String MESSAGE_CUSTOM_TIP = "1122334455";
+    public static Double doubleCustomTip;
+    /* Declare Local Variables */
+    public Button calculate;
+    public EditText totalBill, etCustomTip;
     public SeekBar sbTotalPeople;
     public TextView numPeople;
     public CheckBox cb15Percent, cb18Percent, cb20Percent, cbCustomTip;
     public String messageNumbPeople, messageTotalTip, messageTotalBill, smsTotalTip;
     public String test = "0.00";
-    public static Double doubleCustomTip;
-
 
     /**
-     * Will execute
+     * Will retrieve the information from a EditText that is in our FragmentDialogue.
+     * This will then be saved into our doubleCustomTip value
+     *
+     * IMPROVE CODE: This code could be improved by parsing the double directly into a String
+     * @param customTip Will be our value
+     */
+    public static void setCustomTip(Double customTip){
+
+        //Returns the vale of our edit text
+        doubleCustomTip = customTip;
+
+
+        Log.d("SHIT", "THIS WORKS"+doubleCustomTip);
+
+    }
+
+    /**
+     * Connect our views with our java code and set our characteristics for the next activity
      * @param savedInstanceState
      */
 
@@ -101,8 +117,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-
-
 
     /**
      * Method will set up a switch statement that will interprete each
@@ -201,7 +215,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
     /**
      * will change our values toString if they have not yet been set as one
      * and then will package up the information( messageTotalTip, messageTotalBill,
@@ -215,6 +228,8 @@ public class MainActivity extends AppCompatActivity {
 
         Intent in = new Intent(this, ActivityDisplayTotal.class);
 
+
+
         //Parse variables to String
         messageTotalBill = totalBill.getText().toString();
         messageNumbPeople = numPeople.getText().toString();
@@ -225,7 +240,8 @@ public class MainActivity extends AppCompatActivity {
             try{
             test = Double.toString(doubleCustomTip);
             }catch (NullPointerException ex){
-            Toast.makeText(MainActivity.this,"Please make sure to fill out everything",Toast.LENGTH_LONG).show();
+
+                Toast.makeText(MainActivity.this,"Please make sure to fill out everything",Toast.LENGTH_LONG).show();
             }
             messageTotalTip = test;
 
@@ -245,40 +261,21 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+        //Destroys the activity once intent has been executed
+        in.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+        // attach the variable into the intent
+        in.putExtra(MESSAGE_KEY_NUM_PEOPLE, messageNumbPeople);
+        in.putExtra(MESSAGE_KEY_NUM_TIP, messageTotalTip);
+        in.putExtra(MESSAGE_KEY_TOTAL, messageTotalBill);
+
+
+        // Will start the next activity and send the data
+        startActivity(in);
+                finish();
 
 
 
-
-            //Destroys the activity once intent has been executed
-            in.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
-            // attach the variable into the intent
-            in.putExtra(MESSAGE_KEY_NUM_PEOPLE, messageNumbPeople);
-            in.putExtra(MESSAGE_KEY_NUM_TIP, messageTotalTip);
-            in.putExtra(MESSAGE_KEY_TOTAL, messageTotalBill);
-
-            // Will start the next activity and send the data
-            startActivity(in);
-            finish();
-
-
-    }
-
-
-    /**
-     * Will retrieve the information from a EditText that is in our FragmentDialogue.
-     * This will then be saved into our doubleCustomTip value
-     *
-     * IMPROVE CODE: This code could be improved by parsing the double directly into a String
-     * @param customTip Will be our value
-     */
-    public static void setCustomTip(Double customTip){
-
-        //Returns the vale of our edit text
-        doubleCustomTip = customTip;
-
-
-        Log.d("SHIT", "THIS WORKS"+doubleCustomTip);
 
     }
 
@@ -307,7 +304,7 @@ public class MainActivity extends AppCompatActivity {
     protected void exitByBackKey() {
 
         AlertDialog alertbox = new AlertDialog.Builder(this)
-                .setMessage("Are you sure you want to do this?")
+                .setMessage("Are you sure you want to exit?")
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 
                     // do something when the button is clicked
