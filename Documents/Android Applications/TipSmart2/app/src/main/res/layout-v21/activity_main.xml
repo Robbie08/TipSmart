@@ -34,10 +34,9 @@
         android:fontFamily="sans-serif"
         android:onClick="selectTip"
         android:paddingBottom="16dp"
-        android:text="@string/custom_tipMain"
+        android:text="@string/custom_tip"
         android:textColor="@color/colorWhite"
-        tools:fontFamily="sans-serif"
-        tools:targetApi="lollipop" />
+        tools:fontFamily="sans-serif" />
 
     <ImageView
         android:id="@+id/myImage"
@@ -92,7 +91,7 @@
         android:text="@string/_15Percent"
         android:textColor="@color/colorWhite"
         tools:fontFamily="sans-serif"
-        tools:targetApi="lollipop" />
+        />
 
     <TextView
         android:id="@+id/tvTip"
@@ -124,7 +123,7 @@
         android:text="@string/_20Percent"
         android:textColor="@color/colorWhite"
         tools:fontFamily="sans-serif"
-        tools:targetApi="lollipop" />
+         />
 
     <EditText
         android:id="@+id/etBillAmt"
@@ -142,8 +141,7 @@
         android:textColorHint="@color/colorWhite"
         android:textColorLink="@color/colorWhite"
         android:textSize="12sp"
-        android:textStyle="bold|italic"
-        tools:targetApi="lollipop" />
+        android:textStyle="bold|italic" />
 
     <SeekBar
         android:id="@+id/seekBarNumberOfPeople"
@@ -181,8 +179,7 @@
         android:paddingBottom="16dp"
         android:text="@string/_18Percent"
         android:textColor="@color/colorWhite"
-        tools:fontFamily="sans-serif"
-        tools:targetApi="lollipop" />
+        tools:fontFamily="sans-serif" />
 
 
 </RelativeLayout>

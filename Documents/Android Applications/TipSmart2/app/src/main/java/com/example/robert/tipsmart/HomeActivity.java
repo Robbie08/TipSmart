@@ -8,9 +8,11 @@ import android.support.v7.app.AppCompatActivity;
 
 /**
  * Created by Roberto on 2/28/2017.
+ * PURPOSE: Used for our splash screen that will display
+ * that will then transition to our MainActivity
  */
 
-public class HomeActivity extends AppCompatActivity{
+public class HomeActivity extends AppCompatActivity {
     public static int SPLASH_TIME_OUT = 2500;
 
     @Override
@@ -21,16 +23,17 @@ public class HomeActivity extends AppCompatActivity{
         //create an action bar object that will utilize the support methods
         ActionBar actionBar = getSupportActionBar();
         //Hides our action bar via java and not .XML
+        assert actionBar != null;
         actionBar.hide();
 
-        new Handler().postDelayed(new Runnable(){
+        new Handler().postDelayed(new Runnable() {
             @Override
-            public void run(){
+            public void run() {
                 Intent homeIntent = new Intent(HomeActivity.this, MainActivity.class);
                 startActivity(homeIntent);
                 finish();
             }
 
-        },SPLASH_TIME_OUT);
+        }, SPLASH_TIME_OUT);
     }
 }

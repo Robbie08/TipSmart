@@ -9,4 +9,17 @@
     <string name="counterTip">0%</string>
     <string name="dialog_text">Please Enter The Desired Tip</string>
     <string name="hint">25</string>
+    <string name="cashPerPerson">$$$</string>
+    <string name="each_pays">Each Pays:</string>
+    <string name="tipHolder">$$$</string>
+    <string name="total">Total</string>
+    <string name="tipString">Tip :</string>
+    <string name="grandTotalHolder">$$$</string>
+    <string name="reset">Reset</string>
+    <string name="image_contains_our_logo">Image Contains our Logo</string>
+    <string name="_18Percent">18%</string>
+    <string name="_20Percent">20%</string>
+    <string name="_15Percent">15%</string>
+    <string name="custom_tip">Custom Tip</string>
+    <string name="custom_tipMain">Custom Tip</string>
 </resources>

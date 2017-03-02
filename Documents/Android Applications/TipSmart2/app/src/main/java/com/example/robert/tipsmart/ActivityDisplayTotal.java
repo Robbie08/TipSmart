@@ -1,7 +1,5 @@
 package com.example.robert.tipsmart;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
@@ -13,6 +11,10 @@ import android.widget.TextView;
 
 /**
  * Created by Roberto on 2/28/2017.
+ * <p>
+ * PURPOSE: Contain all of our data passed in from the MainActivity through an Intent
+ * also meets the requirements of displaying the TotalBill, TotalTip and the
+ * Split Per Person.
  */
 
 public class ActivityDisplayTotal extends AppCompatActivity {
@@ -21,7 +23,7 @@ public class ActivityDisplayTotal extends AppCompatActivity {
     public final static String MESSAGE_KEY_NUM_TIP = "boba6969";
     /* Declare Variables */
     Button reset;
-    TextView tvPerPerson, tvGrandTotal, tvTip, tvTipPercent, tvPeopleAMT;
+    TextView tvPerPerson, tvGrandTotal, tvTip, tvTipPercent;
     Double valueNumPeople, valueNumTip, valueGrandTotal;
     Double totalTip, totalPerPerson, grandTotal;
 
@@ -43,6 +45,7 @@ public class ActivityDisplayTotal extends AppCompatActivity {
         /* create an action bar object that will utilize the support methods */
         ActionBar actionBar = getSupportActionBar();
         /* Hides our action bar via java and not .XML */
+        assert actionBar != null;
         actionBar.hide();
 
         /* Intent object that will get our data */
@@ -104,7 +107,7 @@ public class ActivityDisplayTotal extends AppCompatActivity {
 
 
         //Let our user know how much was the tip amount
-        tvTipPercent.setText("Included Tip (" +messageNumbTip+"%) :");
+        tvTipPercent.setText("Included Tip (" + messageNumbTip + "%) :");
 
         reset.setOnClickListener(new View.OnClickListener() {
 
@@ -135,32 +138,4 @@ public class ActivityDisplayTotal extends AppCompatActivity {
         return super.onKeyDown(keyCode, event);
     }
 
-    protected void exitByBackKey() {
-
-        AlertDialog alertbox = new AlertDialog.Builder(this)
-                .setMessage("Want to go back?")
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-
-                    // do something when the button is clicked
-                    public void onClick(DialogInterface arg0, int arg1) {
-
-                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        intent.putExtra("EXIT", true);
-                        startActivity(intent);
-                        finish();
-                        //close();
-
-
-                    }
-                })
-                .setNegativeButton("No", new DialogInterface.OnClickListener() {
-
-                    // do something when the button is clicked
-                    public void onClick(DialogInterface arg0, int arg1) {
-                    }
-                })
-                .show();
-
-    }
 }

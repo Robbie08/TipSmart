@@ -20,6 +20,8 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Objects;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -40,22 +42,24 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Will retrieve the information from a EditText that is in our FragmentDialogue.
      * This will then be saved into our doubleCustomTip value
-     *
+     * <p>
      * IMPROVE CODE: This code could be improved by parsing the double directly into a String
+     *
      * @param customTip Will be our value
      */
-    public static void setCustomTip(Double customTip){
+    public static void setCustomTip(Double customTip) {
 
         //Returns the vale of our edit text
         doubleCustomTip = customTip;
 
 
-        Log.d("SHIT", "THIS WORKS"+doubleCustomTip);
+        Log.d("SHIT", "THIS WORKS" + doubleCustomTip);
 
     }
 
     /**
      * Connect our views with our java code and set our characteristics for the next activity
+     *
      * @param savedInstanceState
      */
 
@@ -99,8 +103,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 //Multiplying i by 5 will cause the value to increment by 5
-                int increment1 = ((i * 5) / 25) +1;
-                numPeople.setText(increment1 +" People" );
+                int increment1 = ((i * 5) / 25) + 1;
+                numPeople.setText(increment1 + " People");
 
             }
 
@@ -131,11 +135,12 @@ public class MainActivity extends AppCompatActivity {
 
 
         //Boolean object will check if our checkbox is checked or not
-        boolean checked = ((CheckBox) view).isChecked();
+        assert view != null;
+        boolean checked;
+        checked = ((CheckBox) view).isChecked();
 
         //Create instance of Fragment Dialog
         FragmentDialogue dialogFragment = new FragmentDialogue();
-
 
 
         switch (view.getId()) {
@@ -192,12 +197,12 @@ public class MainActivity extends AppCompatActivity {
                 if (checked) {
 
 
-                    try{
+                    try {
                         //We have to call our Dialog Fragment here
-                        dialogFragment.show(getFragmentManager(),"tsf");
+                        dialogFragment.show(getFragmentManager(), "tsf");
 
 
-                    }catch (Exception ex){
+                    } catch (Exception ex) {
                         Log.d("CRAP", "THIS DID NOT WORK");
                     }
 
@@ -229,36 +234,34 @@ public class MainActivity extends AppCompatActivity {
         Intent in = new Intent(this, ActivityDisplayTotal.class);
 
 
-
         //Parse variables to String
         messageTotalBill = totalBill.getText().toString();
         messageNumbPeople = numPeople.getText().toString();
-        messageNumbPeople = messageNumbPeople.replace(" People","");
+        messageNumbPeople = messageNumbPeople.replace(" People", "");
 
 
-        if ((messageTotalTip == "")) {
-            try{
-            test = Double.toString(doubleCustomTip);
-            }catch (NullPointerException ex){
+        if ((Objects.equals(messageTotalTip, ""))) {
+            try {
+                test = Double.toString(doubleCustomTip);
+            } catch (NullPointerException ex) {
 
-                Toast.makeText(MainActivity.this,"Please make sure to fill out everything",Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, "Please make sure to fill out everything", Toast.LENGTH_LONG).show();
             }
             messageTotalTip = test;
 
             //TEST THAT OUR VALUE IS NOT NULL
             Log.d("SWEET", "OUR VALUE IS: " + messageTotalTip);
         } else if ((messageTotalTip == null)) {
-            try{
+            try {
                 test = Double.toString(doubleCustomTip);
-            }catch (NullPointerException ex){
-                Toast.makeText(MainActivity.this,"Please make sure to fill out everything",Toast.LENGTH_LONG).show();
+            } catch (NullPointerException ex) {
+                Toast.makeText(MainActivity.this, "Please make sure to fill out everything", Toast.LENGTH_LONG).show();
             }
             messageTotalTip = test;
 
             //TEST THAT OUR VALUE IS NOT NULL
             Log.d("SWEET", "OUR VALUE IS: " + messageTotalTip);
         }
-
 
 
         //Destroys the activity once intent has been executed
@@ -272,15 +275,12 @@ public class MainActivity extends AppCompatActivity {
 
         // Will start the next activity and send the data
         startActivity(in);
-                finish();
-
-
+        finish();
 
 
     }
 
     /**
-     *
      * Method will generate a true or false value that we will then use in our exitByBackKey().
      *
      * @param keyCode
@@ -303,7 +303,7 @@ public class MainActivity extends AppCompatActivity {
      */
     protected void exitByBackKey() {
 
-        AlertDialog alertbox = new AlertDialog.Builder(this)
+        AlertDialog alertDialog = new AlertDialog.Builder(this)
                 .setMessage("Are you sure you want to exit?")
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 

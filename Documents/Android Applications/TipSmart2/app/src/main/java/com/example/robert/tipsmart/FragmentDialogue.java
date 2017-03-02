@@ -13,6 +13,10 @@ import android.widget.Toast;
 
 /**
  * Created by Roberto on 2/28/2017.
+ * <p>
+ * PURPOSE: Will contain the functionality and communication between
+ * this fragment and our MainActivity. This activity will collect the
+ * CustomTip
  */
 public class FragmentDialogue extends DialogFragment {
     //public final static String MESSAGE_CUSTOM_TIP = "1122334455";
@@ -20,7 +24,7 @@ public class FragmentDialogue extends DialogFragment {
 
     /*Create an instance of interface */
     @Override
-    public Dialog onCreateDialog(Bundle savedInstanceState){
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         final View view;
         LayoutInflater inflater = LayoutInflater.from(getActivity());
@@ -29,8 +33,7 @@ public class FragmentDialogue extends DialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
 
-
-        etCustomTip= (EditText) view.findViewById(R.id.etCustomTip);
+        etCustomTip = (EditText) view.findViewById(R.id.etCustomTip);
 
         builder.setTitle("Enter Custom Tip:");
         builder.setView(view);
@@ -51,7 +54,7 @@ public class FragmentDialogue extends DialogFragment {
                 MainActivity.setCustomTip(doubleTipAmt);
 
                 /*We can display a toast that will allow the user to know what percent he put*/
-                Toast.makeText(getActivity(), "Your custom percent was: " +stringTipAmt +"%", Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), "Your custom percent was: " + stringTipAmt + "%", Toast.LENGTH_LONG).show();
 
             }
         });

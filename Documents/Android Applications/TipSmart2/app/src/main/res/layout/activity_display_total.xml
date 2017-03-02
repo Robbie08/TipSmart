@@ -16,6 +16,7 @@
         android:layout_height="150dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
+        android:contentDescription="@string/image_contains_our_logo"
         android:paddingBottom="16dp"
         android:src="@drawable/tipsmartapplogo" />
 
@@ -28,10 +29,9 @@
         android:layout_alignBottom="@+id/tvEachPerson"
         android:layout_alignStart="@+id/tvTip"
         android:paddingBottom="16dp"
-        android:singleLine="false"
-        android:text="$$$"
+        android:text="@string/cashPerPerson"
         android:textColor="@color/colorWhite"
-        android:textSize="16dp"
+        android:textSize="16sp"
         android:textStyle="bold"
         tools:fontFamily="sans-serif-smallcaps" />
 
@@ -43,24 +43,11 @@
         android:layout_below="@+id/tvTipCount"
         android:layout_marginTop="48dp"
         android:fontFamily="sans-serif"
-        android:text="Each Pays: "
+        android:text="@string/each_pays"
         android:textColor="@color/colorWhite"
-        android:textSize="16dp"
+        android:textSize="16sp"
         android:textStyle="bold"
         tools:fontFamily="sans-serif" />
-
-    <Button
-        android:id="@+id/bReset"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/tvPerPerson"
-        android:layout_marginTop="48dp"
-        android:background="@color/colorWhite"
-        android:paddingBottom="16dp"
-        android:text="Reset"
-        android:textColor="@color/colorPrimaryDark"
-        tools:fontFamily="sans-serif-smallcaps" />
 
     <TextView
         android:id="@+id/tvTip"
@@ -71,9 +58,9 @@
         android:layout_marginStart="28dp"
         android:layout_toEndOf="@+id/tvTipCount"
         android:paddingBottom="16dp"
-        android:text="$$$"
+        android:text="@string/tipHolder"
         android:textColor="@color/colorWhite"
-        android:textSize="16dp"
+        android:textSize="16sp"
         android:textStyle="bold"
         tools:fontFamily="sans-serif-smallcaps" />
 
@@ -85,12 +72,12 @@
         android:layout_centerHorizontal="true"
         android:fontFamily="sans-serif"
         android:paddingBottom="16dp"
-        android:text="Total"
+        android:text="@string/total"
         android:textColor="@color/colorWhite"
-        android:textSize="16dp"
+        android:textSize="16sp"
         android:textStyle="bold"
         tools:fontFamily="sans-serif"
-        tools:textSize="16dp"
+        tools:textSize="16sp"
         tools:textStyle="bold" />
 
     <TextView
@@ -102,12 +89,12 @@
         android:layout_marginTop="21dp"
         android:fontFamily="sans-serif"
         android:paddingBottom="16dp"
-        android:text="Tip :  "
+        android:text="@string/tipString"
         android:textColor="@color/colorWhite"
-        android:textSize="16dp"
+        android:textSize="16sp"
         android:textStyle="bold"
         tools:fontFamily="sans-serif"
-        tools:textSize="16dp" />
+        tools:textSize="16sp" />
 
     <TextView
         android:id="@+id/tvGrandTotal"
@@ -119,10 +106,23 @@
         android:fontFamily="sans-serif-smallcaps"
         android:gravity="center"
         android:paddingBottom="16dp"
-        android:text="$$$"
+        android:text="@string/grandTotalHolder"
         android:textColor="@color/colorWhite"
         android:textSize="36sp"
         android:textStyle="bold"
         tools:fontFamily="sans-serif-smallcaps"
         tools:textSize="36sp" />
+
+    <Button
+        android:id="@+id/bReset"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="22dp"
+        android:background="@color/colorWhite"
+        android:paddingBottom="16dp"
+        android:text="@string/reset"
+        android:textColor="@color/colorPrimaryDark"
+        tools:fontFamily="sans-serif-smallcaps" />
 </RelativeLayout>
